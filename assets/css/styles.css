@@ -1,0 +1,48 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: monospace;;
+  font-size: 14px;
+}
+
+.titlebar {
+  width: 100%;
+  padding: 10px;
+  background:#F0F0F0;
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+}
+
+.titlebar > a {
+  font-size: 14px;
+  position:absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+article {
+  width: 100%;
+  height:calc(100% - 55px);
+}
+
+button {
+  height: 35px;
+  width: 35px;
+  line-height: 12.5px;
+  padding:10px;
+  border-radius: 50%;
+}
+
+select {
+  font-size:16px;
+  vertical-align: middle;
+}
+
+.CodeMirror {
+  width:100%;
+  height:100%;
+  font-size: 16px;
+}

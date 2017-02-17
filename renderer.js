@@ -72,14 +72,14 @@ var loadTemplate = function(language, callback) {
 $("#language").change(function() {
   var name = $("#language").find("option:selected").text();
   loadLanguage(name);
-  if(editor.getValue() == template) {
-    loadTemplate(name, function(){
+  if (editor.getValue() == template) {
+    loadTemplate(name, function() {
       editor.setValue(template);
     });
   }
 });
 
 loadLanguage("C");
-loadTemplate("C", function(){
+loadTemplate("C", function() {
   editor.setValue(template);
 });

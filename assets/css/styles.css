@@ -6,6 +6,7 @@ html, body {
   overflow: hidden;
   font-family: monospace;
   font-size: 14px;
+  background:#151515;
 }
 
 .titlebar {
@@ -14,13 +15,6 @@ html, body {
   background: #F0F0F0;
   -webkit-app-region: drag;
   -webkit-user-select: none;
-}
-
-.titlebar>a {
-  font-size: 14px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 article {
@@ -40,6 +34,10 @@ button {
 #btnstart {
   background:#5cb85c;
   margin-right:-10px;
+}
+
+#btnstart:active {
+  background: #449d44;
 }
 
 select {

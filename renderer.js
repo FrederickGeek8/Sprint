@@ -1,20 +1,10 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
-var fs = require('fs');
+var fs = require('fs'),
+  struct_languages = require('./language.struct.js');
 
 var value = "";
-var struct_languages = {
-  "C": ["clike", "text/x-csrc", "cl", ""],
-  "C#": ["clike", "text/x-csharp", "csc", ""],
-  "C++": ["clike", "text/x-c++src", "cl", ""],
-  "Go": ["go", "text/x-go", "", "go run"],
-  "Java": ["clike", "text/x-java", "javac", "java"],
-  "Node.js": ["javascript", "text/javascript", "", "node"],
-  "PHP": ["php", "text/x-php", "", "php"],
-  "Python": ["python", "text/x-python", "", "python"],
-  "Python 3": ["python", "text/x-python", "", "python3"]
-};
 
 var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
   value: value,
@@ -40,13 +30,13 @@ jQuery.loadScript = function(url, callback) {
 var loadedLanguages = [];
 var loadLanguage = function(language) {
   if (loadedLanguages.indexOf(language) < 0) {
-    var path = 'bower_components/codemirror/mode/' + struct_languages[language][0] + '/' + struct_languages[language][0] + '.js';
+    var path = 'bower_components/codemirror/mode/' + struct_languages[language].style + '/' + struct_languages[language].style + '.js';
     $.loadScript(path, function() {
-      editor.setOption("mode", struct_languages[language][1]);
+      editor.setOption("mode", struct_languages[language].mime);
       loadedLanguages.push(language);
     });
   } else {
-    editor.setOption("mode", struct_languages[language][1]);
+    editor.setOption("mode", struct_languages[language].mime);
   }
 };
 
@@ -59,7 +49,7 @@ for (var key in struct_languages) {
 
 var template = "";
 var loadTemplate = function(language, callback) {
-  var filename = struct_languages[language][1].replace("text/", "");
+  var filename = struct_languages[language].mime.replace("text/", "");
   fs.readFile(__dirname + '/templates/' + filename + '.template', function(err, data) {
     if (err) {
       throw err;
@@ -77,6 +67,10 @@ $("#language").change(function() {
       editor.setValue(template);
     });
   }
+});
+
+$("#btnstart").click(function() {
+
 });
 
 loadLanguage("C");

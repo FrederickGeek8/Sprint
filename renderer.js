@@ -2,9 +2,12 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 var fs = require('fs'),
-  struct_languages = require('./language.struct.js');
+  struct_languages = require('./language.struct.js'),
+  File = require('./File.class.js');
 
 var value = "";
+
+var currentFile = new File();
 
 var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
   value: value,
@@ -70,7 +73,11 @@ $("#language").change(function() {
 });
 
 $("#btnstart").click(function() {
-
+  currentFile.save(editor.getValue(), function(){
+    currentFile.compile(function(){
+      currentFile.run();
+    });
+  });
 });
 
 loadLanguage("C");

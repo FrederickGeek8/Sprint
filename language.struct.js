@@ -1,10 +1,17 @@
+var path = require('path');
 var struct_languages = {
   "C": {
     "style": "clike",
     "mime": "text/x-csrc",
-    "compile": "cl",
-    "run": "",
-    "extensions": ".js"
+    "compile": function(folder, basename) {
+      return '.\\compile.bat ' + folder + '\\' + basename + ' ' + folder;
+
+    },
+    "run": function(folder, basename) {
+      return 'start cmd.exe /K ' + folder + '\\' + basename + '.exe';
+    },
+    "outension": "exe",
+    "extension": ".c"
   },
   "C#": {
     "style": "clike",

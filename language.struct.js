@@ -4,8 +4,7 @@ var struct_languages = {
     "style": "clike",
     "mime": "text/x-csrc",
     "compile": function(folder, basename) {
-      return '.\\scripts\\x-csrc.bat ' + folder + '\\' + basename + ' ' + folder;
-
+      return 'cd ' + folder + ' && cl ' + basename + '.c';
     },
     "run": function(folder, basename) {
       return 'start cmd.exe /K ' + folder + '\\' + basename + '.exe';
@@ -16,15 +15,23 @@ var struct_languages = {
   "C#": {
     "style": "clike",
     "mime": "text/x-csharp",
-    "compile": "csc",
-    "run": "",
+    "compile": function(folder, basename) {
+      return 'cd ' + folder + ' && csc ' + basename + '.cs';
+    },
+    "run": function(folder, basename) {
+      return 'start cmd.exe /K ' + folder + '\\' + basename + '.exe';
+    },
     "extension": ".cs"
   },
   "C++": {
     "style": "clike",
     "mime": "text/x-c++src",
-    "compile": "cl",
-    "run": "",
+    "compile": function(folder, basename) {
+      return 'cd ' + folder + ' && cl ' + basename + '.cpp';
+    },
+    "run": function(folder, basename) {
+      return 'start cmd.exe /K ' + folder + '\\' + basename + '.exe';
+    },
     "extension": ".cpp"
   },
   "Go": {

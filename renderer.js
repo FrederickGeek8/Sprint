@@ -41,6 +41,10 @@ var loadLanguage = function(language) {
   } else {
     editor.setOption("mode", struct_languages[language].mime);
   }
+
+  currentFile = new File({
+    'language' : language
+  });
 };
 
 for (var key in struct_languages) {
@@ -65,11 +69,10 @@ var loadTemplate = function(language, callback) {
 $("#language").change(function() {
   var name = $("#language").find("option:selected").text();
   loadLanguage(name);
-  if (editor.getValue() == template) {
-    loadTemplate(name, function() {
-      editor.setValue(template);
-    });
-  }
+
+  loadTemplate(name, function() {
+    editor.setValue(template);
+  });
 });
 
 $("#btnstart").click(function() {

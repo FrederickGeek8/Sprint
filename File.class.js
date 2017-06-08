@@ -5,6 +5,7 @@ var temp = require('temp').track(),
   path = require('path');
 
 function File(options) {
+  base = this;
   if (typeof options == "undefined" || typeof options.language == "undefined") {
     this.language = "C";
   } else {
@@ -12,7 +13,7 @@ function File(options) {
   }
 
   if (typeof options == "undefined" || typeof options.path == "undefined") {
-    base = this;
+
     temp.open({
       suffix: struct_languages[base.language].extension
     }, function(err, info) {
@@ -32,6 +33,17 @@ function File(options) {
     console.log(this.basename);
     this.folder = path.dirname(this.path);
   }
+
+  this.child_options = {env: {}};
+
+  child_process.exec('"%VS140COMNTOOLS%\\VsDevCmd.bat" && SET', function(error, stdout, stderr){
+    var lines = stdout.split('\n');
+    for (var i = 0; i < lines.length - 1; i++) {
+      var pair = lines[i].split('=');
+      base.child_options.env[pair[0]] = pair[1].toString().trim();
+    }
+    console.log('env setup');
+  });
 }
 
 File.prototype.changePath = function() {
@@ -50,7 +62,7 @@ File.prototype.compile = function(callback) {
 
   var command = struct_languages[this.language].compile(this.folder, this.basename);
 
-  child_process.exec(command, function (error, stdout, stderr) {
+  child_process.exec(command, this.child_options, function (error, stdout, stderr) {
       console.log('stdout: ' + stdout);
       console.log('stderr: ' + stderr);
       callback();

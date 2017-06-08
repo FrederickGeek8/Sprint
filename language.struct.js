@@ -4,7 +4,7 @@ var struct_languages = {
     "style": "clike",
     "mime": "text/x-csrc",
     "compile": function(folder, basename) {
-      return '.\\compile.bat ' + folder + '\\' + basename + ' ' + folder;
+      return '.\\scripts\\x-csrc.bat ' + folder + '\\' + basename + ' ' + folder;
 
     },
     "run": function(folder, basename) {

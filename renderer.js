@@ -80,6 +80,10 @@ $("#btnstart").click(function() {
   });
 });
 
+$("#btnstop").click(function() {
+  currentFile.stop();
+});
+
 loadLanguage("C");
 loadTemplate("C", function() {
   editor.setValue(template);

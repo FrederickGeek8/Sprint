@@ -86,7 +86,9 @@ var loadLanguage = function(language) {
     editor.setOption("mode", struct_languages[language].mime);
   }
 
-  currentFile.changeLanguage(language);
+  currentFile = new File({
+    'language': language
+  });
 };
 
 for (var key in struct_languages) {

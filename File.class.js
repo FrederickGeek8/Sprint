@@ -76,7 +76,7 @@ File.prototype.compile = function(callback) {
   child_process.exec(command, this.child_options, function (error, stdout, stderr) {
       console.log('stdout: ' + stdout);
       console.log('stderr: ' + stderr);
-      callback();
+      callback.call(this);
       if (error !== null) {
           console.log('exec error: ' + error);
       }

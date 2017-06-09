@@ -8,7 +8,6 @@ var struct_languages = {
     "run": function(folder, basename) {
       return 'start cmd.exe /K "' + folder + '\\' + basename + '.exe"';
     },
-    "outension": "exe",
     "extension": ".c",
     "envhack": true
   },
@@ -39,45 +38,57 @@ var struct_languages = {
   "Go": {
     "style": "go",
     "mime": "text/x-go",
-    "compile": "",
-    "run": "go run",
+    "compile": function(folder, basename) {
+      return '';
+    },
+    "run": function(folder, basename) {
+      return 'start cmd.exe /K go run "' + folder + '\\' + basename + '.go"';
+    },
     "extension": ".go",
-    "envhack": false
-  },
-  "Java": {
-    "style": "clike",
-    "mime": "text/x-java",
-    "compile": "javac",
-    "run": "java",
-    "extension": ".java",
     "envhack": false
   },
   "Node.js": {
     "style": "javascript",
     "mime": "text/javascript",
-    "compile": "",
-    "run": "node",
+    "compile": function(folder, basename) {
+      return '';
+    },
+    "run": function(folder, basename) {
+      return 'start cmd.exe /K node "' + folder + '\\' + basename + '.js"';
+    },
     "envhack": false
   },
   "PHP": {
     "style": "php",
     "mime": "text/x-php",
-    "compile": "",
-    "run": "php",
+    "compile": function(folder, basename) {
+      return '';
+    },
+    "run": function(folder, basename) {
+      return 'start cmd.exe /K php "' + folder + '\\' + basename + '.php"';
+    },
     "envhack": false
   },
   "Python": {
     "style": "python",
     "mime": "text/x-python",
-    "compile": "",
-    "run": "python",
+    "compile": function(folder, basename) {
+      return '';
+    },
+    "run": function(folder, basename) {
+      return 'start cmd.exe /K python "' + folder + '\\' + basename + '.py"';
+    },
     "envhack": false
   },
   "Python 3": {
     "style": "python",
     "mime": "text/x-python",
-    "compile": "",
-    "run": "python3",
+    "compile": function(folder, basename) {
+      return '';
+    },
+    "run": function(folder, basename) {
+      return 'start cmd.exe /K python3 "' + folder + '\\' + basename + '.py"';
+    },
     "envhack": false
   }
 };

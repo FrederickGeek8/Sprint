@@ -1,7 +1,7 @@
 {
-  "name": "electron-quick-start",
+  "name": "sprint-editor",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A Windows spiritual successor to CodeRunner.",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
@@ -19,11 +19,10 @@
   "devDependencies": {
     "electron": "^1.4.15",
     "electron-connect": "^0.6.1",
+    "electron-winstaller": "^2.6.2",
     "gulp": "^3.9.1"
   },
   "dependencies": {
-    "electron-default-menu": "^1.0.1",
-    "shelljs": "^0.7.7",
     "temp": "^0.8.3"
   }
 }

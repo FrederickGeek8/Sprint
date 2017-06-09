@@ -26,7 +26,7 @@ function createWindow () {
   }))
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   const menu = Menu.buildFromTemplate(menuTemplate(mainWindow))
   Menu.setApplicationMenu(menu)

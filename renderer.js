@@ -4,9 +4,14 @@
 var fs = require('fs'),
   struct_languages = require('./language.struct.js'),
   File = require('./File.class.js'),
-  {ipcRenderer, remote} = require('electron'),
-  {dialog} = require('electron').remote;
-  remote.require('./menu.js');
+  {
+    ipcRenderer,
+    remote
+  } = require('electron'),
+  {
+    dialog
+  } = require('electron').remote;
+remote.require('./menu.js');
 
 var value = "";
 
@@ -27,12 +32,29 @@ var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
 ipcRenderer.on('save!', function(event, args) {
   var currentLanguage = currentFile.language;
   dialog.showSaveDialog({
-    filters: [ { 'name': currentLanguage + ' Files', extensions: [struct_languages[currentLanguage].extension.substr(1)] } ]
-  },function(response, checkboxChecked ) {
+    filters: [{
+      'name': currentLanguage + ' Files',
+      extensions: [struct_languages[currentLanguage].extension.substr(1)]
+    }]
+  }, function(response, checkboxChecked) {
     console.log(response);
     currentFile.changePath(response);
-    currentFile.save(editor.getValue(), function(){
+    currentFile.save(editor.getValue(), function() {
 
+    });
+  });
+});
+
+ipcRenderer.on('open!', function(event, args) {
+  dialog.showOpenDialog(function(response, checkboxChecked) {
+    response = response[0];
+    currentFile.changePath(response);
+    fs.readFile(response, function(err, data) {
+      if (err) {
+        throw err;
+      }
+      template = data.toString();
+      editor.setValue(template);
     });
   });
 });
@@ -59,7 +81,7 @@ var loadLanguage = function(language) {
   }
 
   currentFile = new File({
-    'language' : language
+    'language': language
   });
 };
 
@@ -86,7 +108,7 @@ $("#language").change(function() {
   var name = $("#language").find("option:selected").text();
   loadLanguage(name);
   // console.log(JSON.stringify(editor.getValue()), JSON.stringify(template.replace(/\r/g,'')));
-  if (editor.getValue() == template.replace(/\r/g,'')) {
+  if (editor.getValue() == template.replace(/\r/g, '')) {
     loadTemplate(name, function() {
       editor.setValue(template);
     });
@@ -94,8 +116,8 @@ $("#language").change(function() {
 });
 
 $("#btnstart").click(function() {
-  currentFile.save(editor.getValue(), function(){
-    currentFile.compile(function(){
+  currentFile.save(editor.getValue(), function() {
+    currentFile.compile(function() {
       currentFile.run();
     });
   });

@@ -1,4 +1,3 @@
-var path = require('path');
 var struct_languages = {
   "C": {
     "style": "clike",

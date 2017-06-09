@@ -1,5 +1,5 @@
 ![Image of Sprint!](https://frederickgeek8.github.io/Sprint/screenshot.PNG)
-
+<a href="https://github.com/FrederickGeek8/Sprint" class="btn">Download</a>
 ## Sprint! Editor
 
 Sprint! is a (independent) spiritual successor to the widely popular [CodeRunner](https://coderunnerapp.com/)

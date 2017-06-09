@@ -1,39 +1,29 @@
-![Image of Sprint!](https://frederickgeek8.github.io/Sprint/screenshot.PNG)
+![Image of Sprint!](https://raw.githubusercontent.com/FrederickGeek8/Sprint/gh-pages/screenshot.PNG)
 
-## Welcome to GitHub Pages
+## Sprint! Editor
 
-You can use the [editor on GitHub](https://github.com/FrederickGeek8/Sprint/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Sprint! is a (independent) spiritual successor to the widely popular [CodeRunner](https://coderunnerapp.com/)
+application for Mac. Its goal is to bring many of the features that made CodeRunner such a
+great application to the Windows platform.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Features
 
-### Markdown
+### Hackable
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Sprint! is a complete open-source application built upon Electron, and thus is
+hackable to its core. Missing a feature you want, or the syntax themes lacking?
+Every inch of this editor is open to modification.
 
-```markdown
-Syntax highlighted code block
+### Run Code in Numerous Languages
 
-# Header 1
-## Header 2
-### Header 3
+Sprint! serves as the perfect prototyping application for numerous supported languages.
+No need to worry about saving your code or its complication, all of it is built into the editor.
 
-- Bulleted
-- List
+### Code Templates
 
-1. Numbered
-2. List
+Quickly get coding without need to write any main functions or setup code.
 
-**Bold** and _Italic_ and `Code` text
+### More Features Coming Soon
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/FrederickGeek8/Sprint/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+More features are planned for the future. If you have an idea or hack that you
+would love to see in everybody's editor, please submit a pull request or issue!

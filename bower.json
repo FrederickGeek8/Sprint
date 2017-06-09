@@ -1,6 +1,6 @@
 {
-  "name": "electron-quick-start",
-  "description": "A minimal Electron application",
+  "name": "sprint-editor",
+  "description": "A Windows spiritual successor to CodeRunner.",
   "main": "main.js",
   "authors": [
     "GitHub"

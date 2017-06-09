@@ -1,6 +1,6 @@
 {
   "name": "sprint-editor",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A Windows spiritual successor to CodeRunner.",
   "main": "main.js",
   "scripts": {
@@ -8,11 +8,10 @@
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "CodeRunner",
+    "Sprint!",
+    "editor",
+    "IDE"
   ],
   "author": "GitHub",
   "license": "CC0-1.0",

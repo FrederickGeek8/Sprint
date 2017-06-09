@@ -34,20 +34,24 @@ function File(options) {
     this.folder = path.dirname(this.path);
   }
 
-  this.child_options = {env: {}};
-
-  child_process.exec('"%VS140COMNTOOLS%\\VsDevCmd.bat" && SET', function(error, stdout, stderr){
-    var lines = stdout.split('\n');
-    for (var i = 0; i < lines.length - 1; i++) {
-      var pair = lines[i].split('=');
-      base.child_options.env[pair[0]] = pair[1].toString().trim();
-    }
-    console.log('env setup');
-  });
+  this.child_options = {};
+  if(struct_languages[base.language].envhack){
+    child_process.exec('"%VS140COMNTOOLS%\\VsDevCmd.bat" && SET', function(error, stdout, stderr){
+      base.child_options = {env: {}};
+      var lines = stdout.split('\n');
+      for (var i = 0; i < lines.length - 1; i++) {
+        var pair = lines[i].split('=');
+        base.child_options.env[pair[0]] = pair[1].toString().trim();
+      }
+      console.log('env setup');
+    });
+  }
 }
 
-File.prototype.changePath = function() {
-
+File.prototype.changePath = function(newPath) {
+  this.path = newPath;
+  base.basename = path.basename(this.path, struct_languages[this.language].extension);
+  this.folder = path.dirname(this.path);
 };
 
 File.prototype.save = function(text, callback) {

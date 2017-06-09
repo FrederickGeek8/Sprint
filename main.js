@@ -1,3 +1,4 @@
+const {Menu} = require('electron')
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
@@ -6,6 +7,8 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
+
+const menuTemplate = require('./menu.js')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -24,6 +27,9 @@ function createWindow () {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
+
+  const menu = Menu.buildFromTemplate(menuTemplate(mainWindow))
+  Menu.setApplicationMenu(menu)
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

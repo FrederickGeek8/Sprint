@@ -3,7 +3,10 @@
 // All of the Node.js APIs are available in this process.
 var fs = require('fs'),
   struct_languages = require('./language.struct.js'),
-  File = require('./File.class.js');
+  File = require('./File.class.js'),
+  {ipcRenderer, remote} = require('electron'),
+  {dialog} = require('electron').remote;
+  remote.require('./menu.js');
 
 var value = "";
 
@@ -18,7 +21,20 @@ var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
   autoCloseBrackets: true,
   matchBrackets: true,
   showCursorWhenSelecting: true,
-  theme: "base16-dark"
+  theme: "tomorrow-night-eighties"
+});
+
+ipcRenderer.on('save!', function(event, args) {
+  var currentLanguage = currentFile.language;
+  dialog.showSaveDialog({
+    filters: [ { 'name': currentLanguage + ' Files', extensions: [struct_languages[currentLanguage].extension.substr(1)] } ]
+  },function(response, checkboxChecked ) {
+    console.log(response);
+    currentFile.changePath(response);
+    currentFile.save(editor.getValue(), function(){
+
+    });
+  });
 });
 
 jQuery.loadScript = function(url, callback) {
@@ -69,10 +85,12 @@ var loadTemplate = function(language, callback) {
 $("#language").change(function() {
   var name = $("#language").find("option:selected").text();
   loadLanguage(name);
-
-  loadTemplate(name, function() {
-    editor.setValue(template);
-  });
+  // console.log(JSON.stringify(editor.getValue()), JSON.stringify(template.replace(/\r/g,'')));
+  if (editor.getValue() == template.replace(/\r/g,'')) {
+    loadTemplate(name, function() {
+      editor.setValue(template);
+    });
+  }
 });
 
 $("#btnstart").click(function() {

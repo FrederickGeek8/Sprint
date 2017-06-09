@@ -30,19 +30,25 @@ var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
 });
 
 ipcRenderer.on('save!', function(event, args) {
-  var currentLanguage = currentFile.language;
-  dialog.showSaveDialog({
-    filters: [{
-      'name': currentLanguage + ' Files',
-      extensions: [struct_languages[currentLanguage].extension.substr(1)]
-    }]
-  }, function(response, checkboxChecked) {
-    console.log(response);
-    currentFile.changePath(response);
+  if (currentFile.temp) {
+    var currentLanguage = currentFile.language;
+    dialog.showSaveDialog({
+      filters: [{
+        'name': currentLanguage + ' Files',
+        extensions: [struct_languages[currentLanguage].extension.substr(1)]
+      }]
+    }, function(response, checkboxChecked) {
+      console.log(response);
+      currentFile.changePath(response);
+      currentFile.save(editor.getValue(), function() {
+
+      });
+    });
+  } else {
     currentFile.save(editor.getValue(), function() {
 
     });
-  });
+  }
 });
 
 ipcRenderer.on('open!', function(event, args) {
@@ -80,9 +86,7 @@ var loadLanguage = function(language) {
     editor.setOption("mode", struct_languages[language].mime);
   }
 
-  currentFile = new File({
-    'language': language
-  });
+  currentFile.changeLanguage(language);
 };
 
 for (var key in struct_languages) {

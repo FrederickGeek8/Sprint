@@ -27,11 +27,13 @@ function File(options) {
         // Do something with the file
       });
     });
+    this.temp = true;
   } else {
     this.path = options.path;
     this.basename = path.splittext(this.path);
     console.log(this.basename);
     this.folder = path.dirname(this.path);
+    this.temp = false;
   }
 
   this.child_options = {};
@@ -50,6 +52,7 @@ function File(options) {
 
 File.prototype.changePath = function(newPath) {
   this.path = newPath;
+  this.temp = false;
   base.basename = path.basename(this.path, struct_languages[this.language].extension);
   this.folder = path.dirname(this.path);
 };
@@ -59,6 +62,10 @@ File.prototype.save = function(text, callback) {
   fs.writeFile(this.path, text, function() {
     callback.call(this);
   });
+};
+
+File.prototype.changeLanguage = function(language) {
+  this.language = language;
 };
 
 File.prototype.compile = function(callback) {

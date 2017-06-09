@@ -1,4 +1,4 @@
-![Image of Sprint!](https://raw.githubusercontent.com/FrederickGeek8/Sprint/gh-pages/screenshot.PNG)
+![Image of Sprint!](https://github.com/FrederickGeek8/Sprint/blob/gh-pages/screenshot.PNG)
 
 ## Sprint! Editor
 

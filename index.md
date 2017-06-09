@@ -1,5 +1,5 @@
 ![Image of Sprint!](https://frederickgeek8.github.io/Sprint/screenshot.PNG)
-<center><a href="https://github.com/FrederickGeek8/Sprint" class="btn" style="background-image: linear-gradient(120deg, rgba(21, 87, 153, 0.7), rgba(21, 153, 145, 0.7));transition:none;">Download</a></center>
+<center><a href="https://github.com/FrederickGeek8/Sprint/releases/download/v0.1.0/Sprint.-win32-x64.zip" class="btn" style="background-image: linear-gradient(120deg, rgba(21, 87, 153, 0.7), rgba(21, 153, 145, 0.7));transition:none;">Download</a></center>
 ## Sprint! Editor
 
 Sprint! is a (independent) spiritual successor to the widely popular [CodeRunner](https://coderunnerapp.com/)

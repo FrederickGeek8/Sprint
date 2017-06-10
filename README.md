@@ -27,3 +27,14 @@ Quickly get coding without need to write any main functions or setup code.
 
 More features are planned for the future. If you have an idea or hack that you
 would love to see in everybody's editor, please submit a pull request or issue!
+
+## Current Language Support
+
+- C
+- C#
+- C++
+- Go
+- Node.js
+- PHP
+- Python
+- Python 3

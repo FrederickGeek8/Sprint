@@ -4,7 +4,9 @@
   "description": "A Windows spiritual successor to CodeRunner.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build"
   },
   "repository": "https://github.com/FrederickGeek8/Sprint",
   "keywords": [
@@ -17,12 +19,17 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^1.4.15",
+    "electron-builder": "^18.6.2",
     "electron-connect": "^0.6.1",
-    "electron-winstaller": "^2.6.2",
     "gulp": "^3.9.1"
   },
   "dependencies": {
     "electron-settings": "^3.1.1",
     "temp": "^0.8.3"
+  },
+  "build": {
+    "appId": "us.freddy.Sprint",
+    "productName": "Sprint!",
+    "asar": false
   }
 }

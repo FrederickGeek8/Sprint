@@ -10,12 +10,11 @@ var fs = require('fs'),
   } = require('electron'),
   {
     dialog
-  } = require('electron').remote;
+  } = require('electron').remote,
+  Preferences = require('./Preferences.class.js');
 remote.require('./menu.js');
 
 var value = "";
-
-var currentFile = new File();
 
 var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
   value: value,
@@ -28,6 +27,9 @@ var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
   showCursorWhenSelecting: true,
   theme: "tomorrow-night-eighties"
 });
+
+var currentFile = new File();
+var currentPreferences = new Preferences(editor);
 
 ipcRenderer.on('save!', function(event, args) {
   if (currentFile.temp) {
@@ -63,6 +65,10 @@ ipcRenderer.on('open!', function(event, args) {
       editor.setValue(template);
     });
   });
+});
+
+ipcRenderer.on('openPreferences', function(event, args) {
+  currentPreferences.show();
 });
 
 jQuery.loadScript = function(url, callback) {

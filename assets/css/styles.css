@@ -6,12 +6,12 @@ html, body {
   overflow: hidden;
   font-family: monospace;
   font-size: 14px;
-  background:#151515;
+  background: #151515;
 }
 
 .titlebar {
   width: 100%;
-  height:50px;
+  height: 50px;
   background: #F0F0F0;
   -webkit-app-region: drag;
   -webkit-user-select: none;
@@ -22,18 +22,18 @@ article {
   height: calc(100% - 50px);
 }
 
-button {
+.titlebar button {
   display: inline-block;
-  margin:0;
-  padding:0;
-  width:55px;
-  height:100%;
-  border:0;
+  margin: 0;
+  padding: 0;
+  width: 55px;
+  height: 100%;
+  border: 0;
 }
 
 #btnstart {
-  background:#5cb85c;
-  margin-right:-10px;
+  background: #5cb85c;
+  margin-right: -10px;
 }
 
 #btnstart:active {
@@ -48,17 +48,11 @@ select {
   font-weight: bold;
   padding: 2px 20px;
   vertical-align: middle;
-  -webkit-appearance:none;
-  width:150px;
-  background-image:
-    linear-gradient(45deg, transparent 50%, black 50%),
-    linear-gradient(135deg, black 50%, transparent 50%),
-    linear-gradient(to right, transparent, transparent);
-  background-position: calc(100% - 35px) calc(1em + -8px),     calc(100% - 30px) calc(1em + -8px), 100% 0;
-  background-size:
-    5px 5px,
-    5px 5px,
-    2.5em 2.5em;
+  -webkit-appearance: none;
+  width: 150px;
+  background-image: linear-gradient(45deg, transparent 50%, black 50%), linear-gradient(135deg, black 50%, transparent 50%), linear-gradient(to right, transparent, transparent);
+  background-position: calc(100% - 35px) calc(1em + -8px), calc(100% - 30px) calc(1em + -8px), 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
   background-repeat: no-repeat;
 }
 
@@ -70,4 +64,20 @@ select:focus {
   width: 100%;
   height: 100%;
   font-size: 16px;
+}
+
+#preferences {
+  display: block;
+  background:#eee;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding:25px;
+}
+
+#preferences select {
+  width: auto;
 }

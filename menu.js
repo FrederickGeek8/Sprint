@@ -7,14 +7,14 @@ function getTemplate(window) {
           label: 'Open',
           accelerator: 'CommandOrControl+O',
           click() {
-            window.webContents.send( 'open!' );
+            window.webContents.send('open!');
           },
         },
         {
           label: 'Save',
           accelerator: 'CommandOrControl+S',
           click() {
-            window.webContents.send( 'save!' );
+            window.webContents.send('save!');
           },
         }
       ]
@@ -48,6 +48,15 @@ function getTemplate(window) {
         },
         {
           role: 'selectall'
+        },
+        {
+          type: 'separator'
+        },
+        {
+          label: 'Preferences',
+          click() {
+            window.webContents.send('openPreferences');
+          },
         }
       ]
     },

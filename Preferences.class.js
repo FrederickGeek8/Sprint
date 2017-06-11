@@ -33,7 +33,7 @@ Preferences.prototype.show = function() {
     var options = "<select id='theme'>";
     for (var key in themes) {
       var selected = "";
-      if (key == this.theme) {
+      if (key == base.theme) {
         selected = "selected";
       }
       options += "<option value='" + key + "'" + selected + ">" + themes[key] + "</option>";
@@ -62,6 +62,8 @@ Preferences.prototype.set = function(variable, value) {
     case "theme":
       this.theme = value;
       settings.set('theme', value);
+      $('title').append('<link rel="stylesheet" href="bower_components/codemirror/theme/' + this.theme + '.css">');
+      this.editor.setOption("theme", this.theme);
       break;
     default:
 

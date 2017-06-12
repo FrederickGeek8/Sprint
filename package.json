@@ -15,7 +15,7 @@
     "editor",
     "IDE"
   ],
-  "author": "GitHub",
+  "author": "Frederick Morlock",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^1.4.15",

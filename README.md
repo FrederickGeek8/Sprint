@@ -38,3 +38,8 @@ would love to see in everybody's editor, please submit a pull request or issue!
 - PHP
 - Python
 - Python 3
+
+## Building
+
+Sprint! can be run using `npm start` and can be built for distribution using
+`npm run dist`.

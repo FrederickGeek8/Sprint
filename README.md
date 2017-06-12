@@ -6,6 +6,8 @@ Sprint! is a (independent) spiritual successor to the widely popular [CodeRunner
 application for Mac. Its goal is to bring many of the features that made CodeRunner such a
 great application to the Windows platform.
 
+**Download the latest prebuilt [here](https://github.com/FrederickGeek8/Sprint/releases/download/v0.1.1/Sprint.Setup.0.1.0.exe).**
+
 ## Features
 
 ### Hackable

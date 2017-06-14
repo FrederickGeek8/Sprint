@@ -1,0 +1,39 @@
+.vertical {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  background: grey;
+  width: 100%;
+  height: 100%; }
+  .vertical > .item {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-grow: 1; }
+  .vertical > .resize {
+    position: relative;
+    height: 100%;
+    width: 4px;
+    margin-left: -4px;
+    cursor: col-resize; }
+
+.horizontal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: grey;
+  width: 100%;
+  height: 100%}
+  .horizontal > .item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1; }
+  .horizontal > .resize {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    margin-top: -4px;
+    cursor: row-resize; }

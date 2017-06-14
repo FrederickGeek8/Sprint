@@ -2,8 +2,9 @@ const settings = require('electron-settings'),
   fs = require('fs'),
   path = require('path');
 
-function Preferences(editor) {
+function Preferences(editor, currentConsole) {
   this.editor = editor;
+  this.console = currentConsole;
   if (!settings.has('theme')) {
     this.theme = "tomorrow-night-eighties";
     settings.set('theme', 'tomorrow-night-eighties');
@@ -64,6 +65,7 @@ Preferences.prototype.set = function(variable, value) {
       settings.set('theme', value);
       $('title').append('<link rel="stylesheet" href="bower_components/codemirror/theme/' + this.theme + '.css">');
       this.editor.setOption("theme", this.theme);
+      this.console.reload();
       break;
     default:
 

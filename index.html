@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="bower_components/codemirror/addon/dialog/dialog.css">
   <link rel="stylesheet" href="bower_components/codemirror/theme/tomorrow-night-eighties.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/paneless.css">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
@@ -19,8 +20,20 @@
     <select id="language">
     </select>
   </div>
-  <article>
-  </article>
+  <div class="workspace">
+    <div class="horizontal">
+      <div class="item" style="flex-grow:1.5;">
+        <article>
+        </article>
+      </div>
+      <div class="item" style="flex-grow:0.5;">
+        <div class="console">
+          <p><span class="console_standard">Test</span></p>
+          <p><span class="console_error">Error</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
   <script>
     if (typeof module === 'object') {
       window.module = module;
@@ -39,6 +52,7 @@
   <script src="bower_components/codemirror/addon/fold/brace-fold.js"></script>
   <script src="bower_components/codemirror/keymap/sublime.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
+  <script src="bower_components/Paneless/paneless.js"></script>
   <script>
     if (window.module) module = window.module;
   </script>

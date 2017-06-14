@@ -11,7 +11,8 @@ var fs = require('fs'),
   {
     dialog
   } = require('electron').remote,
-  Preferences = require('./Preferences.class.js');
+  Preferences = require('./Preferences.class.js'),
+  Console = require('./Console.class.js');
 remote.require('./menu.js');
 
 var value = "";
@@ -28,8 +29,12 @@ var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
   theme: "tomorrow-night-eighties"
 });
 
-var currentFile = new File();
-var currentPreferences = new Preferences(editor);
+$('.workspace').paneless();
+
+var currentConsole = new Console($('.console'));
+var currentFile = new File(currentConsole);
+var currentPreferences = new Preferences(editor, currentConsole);
+
 
 ipcRenderer.on('save!', function(event, args) {
   if (currentFile.temp) {
@@ -142,4 +147,9 @@ $("#btnstop").click(function() {
 loadLanguage("C");
 loadTemplate("C", function() {
   editor.setValue(template);
+});
+
+// Setup console background color
+$(function() {
+  currentConsole.reload();
 });

@@ -25,6 +25,7 @@
   "dependencies": {
     "jquery": "^3.1.1",
     "font-awesome": "^4.7.0",
-    "codemirror": "^5.22.2"
+    "codemirror": "^5.22.2",
+    "Paneless": "https://github.com/FrederickGeek8/Paneless.js.git"
   }
 }

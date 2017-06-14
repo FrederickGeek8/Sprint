@@ -3,11 +3,15 @@ function Console(element) {
 }
 
 Console.prototype.postMsg = function(message) {
-  this.element.append($('<p><span class="console_standard"></span></p>').text(message));
+  var p = $('<p>');
+  p.append($('<span class="console_standard"></span>').text(message));
+  this.element.append(p);
 };
 
 Console.prototype.postError = function(message) {
-  this.element.append($('<p><span class="console_error"></span></p>').text(message));
+  var p = $('<p>');
+  p.append($('<span class="console_error"></span>').text(message));
+  this.element.append(p);
 };
 
 Console.prototype.clear = function() {

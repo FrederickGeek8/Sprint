@@ -39,6 +39,8 @@ function File(currentConsole, options) {
 
   this.child_options = {};
   if(struct_languages[base.language].envhack){
+    $("#loading").show();
+    $("#btnstart").prop("disabled", true);
     child_process.exec('"%VS140COMNTOOLS%\\VsDevCmd.bat" && SET', function(error, stdout, stderr){
       base.child_options = {env: {}};
       var lines = stdout.split('\n');
@@ -46,7 +48,8 @@ function File(currentConsole, options) {
         var pair = lines[i].split('=');
         base.child_options.env[pair[0]] = pair[1].toString().trim();
       }
-      console.log('env setup');
+      $("#btnstart").prop("disabled", false);
+      $("#loading").hide();
     });
   }
 }
@@ -70,29 +73,30 @@ File.prototype.changeLanguage = function(language) {
 };
 
 File.prototype.compile = function(callback) {
-  // cmd /c ""C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsDevCmd.bat""
-
+  var base = this;
   var command = struct_languages[this.language].compile(this.folder, this.basename);
   this.console.clear();
 
   child_process.exec(command, this.child_options, function (error, stdout, stderr) {
-    this.console.postMsg(stdout);
+    base.console.postMsg(stdout);
+    base.console.postError(stderr);
     callback.call(this);
     if (error !== null) {
-      this.console.postError('exec error ' + error);
+      base.console.postError('exec error ' + error);
     }
   });
 };
 
 File.prototype.run = function() {
+  var base = this;
   var command = struct_languages[this.language].run(this.folder, this.basename);
-  this.console.clear();
 
   child_process.exec(command, function (error, stdout, stderr) {
-    this.console.postMsg(stdout);
+    base.console.postMsg(stdout);
+    base.console.postError(stderr);
     callback.call(this);
     if (error !== null) {
-      this.console.postError('exec error ' + error);
+      base.console.postError('exec error ' + error);
     }
   });
 };

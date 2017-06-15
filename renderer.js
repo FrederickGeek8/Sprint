@@ -66,8 +66,8 @@ ipcRenderer.on('open!', function(event, args) {
       if (err) {
         throw err;
       }
-      template = data.toString();
-      editor.setValue(template);
+      tmp = data.toString();
+      editor.setValue(tmp);
     });
   });
 });

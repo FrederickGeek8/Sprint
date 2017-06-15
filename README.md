@@ -36,6 +36,7 @@ would love to see in everybody's editor, please submit a pull request or issue!
 - C#
 - C++
 - Go
+- Java
 - Node.js
 - PHP
 - Python

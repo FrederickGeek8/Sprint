@@ -47,6 +47,18 @@ var struct_languages = {
     "extension": ".go",
     "envhack": false
   },
+  "Java": {
+    "style": "clike",
+    "mime": "text/x-java",
+    "compile": function(folder, basename) {
+      return 'cd "' + folder + '" && javac "' + basename + '.java"';
+    },
+    "run": function(folder, basename) {
+      return 'start cmd.exe /K java -cp "' + folder + '" ' + basename;
+    },
+    "extension": ".java",
+    "envhack": false
+  },
   "Node.js": {
     "style": "javascript",
     "mime": "text/javascript",

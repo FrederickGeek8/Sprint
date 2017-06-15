@@ -75,6 +75,7 @@ File.prototype.changeLanguage = function(language) {
 File.prototype.compile = function(callback) {
   var base = this;
   var command = struct_languages[this.language].compile(this.folder, this.basename);
+  console.log(command);
   this.console.clear();
 
   child_process.exec(command, this.child_options, function (error, stdout, stderr) {
@@ -89,16 +90,31 @@ File.prototype.compile = function(callback) {
 
 File.prototype.run = function() {
   var base = this;
-  var command = struct_languages[this.language].run(this.folder, this.basename);
-
-  child_process.exec(command, function (error, stdout, stderr) {
-    base.console.postMsg(stdout);
-    base.console.postError(stderr);
-    callback.call(this);
-    if (error !== null) {
-      base.console.postError('exec error ' + error);
-    }
-  });
+  if (this.language == "Java") {
+    // Get class name
+    var getClass = 'java -jar tools\\parsejava-all-1.0.jar ' + this.folder + '\\' + this.basename + '.java';
+    child_process.exec(getClass, this.child_options, function(error, stdout, stderr) {
+      var command = struct_languages[base.language].run(base.folder, stdout);
+      console.log(command);
+      child_process.exec(command, base.child_options, function(error2, stdout2, stderr2) {
+        base.console.postMsg(stdout2);
+        base.console.postError(stderr2);
+        if (error !== null) {
+          base.console.postError('exec error ' + error2);
+        }
+      });
+    });
+  } else {
+    var command = struct_languages[this.language].run(this.folder, this.basename);
+    child_process.exec(command, this.child_options, function(error, stdout, stderr) {
+      base.console.postMsg(stdout);
+      base.console.postError(stderr);
+      callback.call(this);
+      if (error !== null) {
+        base.console.postError('exec error ' + error);
+      }
+    });
+  }
 };
 
 module.exports = File;

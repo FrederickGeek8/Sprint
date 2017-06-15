@@ -31,7 +31,7 @@ function File(currentConsole, options) {
     this.temp = true;
   } else {
     this.path = options.path;
-    this.basename = path.splittext(this.path);
+    this.basename = path.basename(this.path, struct_languages[base.language].extension);
     console.log(this.basename);
     this.folder = path.dirname(this.path);
     this.temp = false;
@@ -70,6 +70,22 @@ File.prototype.save = function(text, callback) {
 
 File.prototype.changeLanguage = function(language) {
   this.language = language;
+  if (this.temp) {
+    temp.open({
+      suffix: struct_languages[base.language].extension
+    }, function(err, info) {
+      console.log(info);
+      if (err) throw err;
+      base.path = info.path;
+      base.basename = path.basename(base.path, struct_languages[base.language].extension);
+      base.folder = path.dirname(base.path);
+      fs.close(info.fd, function(err) {
+        if (err) throw err;
+        // Do something with the file
+      });
+    });
+    this.temp = true;
+  }
 };
 
 File.prototype.compile = function(callback) {

@@ -109,7 +109,6 @@ File.prototype.run = function() {
     child_process.exec(command, this.child_options, function(error, stdout, stderr) {
       base.console.postMsg(stdout);
       base.console.postError(stderr);
-      callback.call(this);
       if (error !== null) {
         base.console.postError('exec error ' + error);
       }

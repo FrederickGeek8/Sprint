@@ -1,6 +1,6 @@
 {
   "name": "sprint-editor",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A Windows spiritual successor to CodeRunner.",
   "main": "main.js",
   "scripts": {

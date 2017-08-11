@@ -99,7 +99,7 @@ var struct_languages = {
       return '';
     },
     "run": function(folder, basename) {
-      return 'start cmd.exe /K python3 "' + folder + '\\' + basename + '.py"';
+      return 'start cmd.exe /K py -3 "' + folder + '\\' + basename + '.py"';
     },
     "envhack": false
   }
